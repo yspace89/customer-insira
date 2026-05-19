@@ -383,9 +383,15 @@ main .border-b-slate-800 {
   border-color: #e2e8f0 !important;
 }
 
-/* Ensure all dark banner cards and their children keep white text */
+/* Ensure headings and texts inside ALL dark-themed cards/elements remain pure white! */
 .bg-\[\#0b1329\],
-.bg-\[\#0b1329\] * {
+.bg-\[\#0b1329\] *,
+.bg-\[\#004b87\],
+.bg-\[\#004b87\] *,
+.bg-gradient-to-r,
+.bg-gradient-to-r *,
+.custom-tab-active,
+.custom-tab-active * {
   color: #ffffff !important;
 }
 
