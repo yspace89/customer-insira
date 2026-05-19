@@ -35,7 +35,7 @@ export default function Sidebar({ profile }) {
   const pathname = usePathname();
 
   return (
-    <aside className="w-80 h-screen fixed top-0 left-0 bg-[#090d16]/80 backdrop-blur-xl border-r border-slate-800/80 p-6 flex flex-col z-30 justify-between">
+    <aside className="w-80 h-screen fixed top-0 left-0 bg-slate-950/90 backdrop-blur-xl border-r border-slate-800/80 p-6 hidden lg:flex flex-col z-30 justify-between">
       <div>
         {/* LOGO */}
         <div className="flex items-center gap-3 mb-10 px-2">

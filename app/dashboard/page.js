@@ -70,6 +70,80 @@ export default function DashboardPage() {
             </div>
           </div>
 
+          {/* QUICK ACCESS ACTIONS (MOBILE FIRST SLIDER) */}
+          <div className="space-y-4">
+            <h3 className="text-xs lg:text-sm font-extrabold text-slate-400 uppercase tracking-[0.2em] ml-1">
+              Akses Cepat Layanan
+            </h3>
+            <div className="flex gap-4 overflow-x-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-none">
+              
+              {/* Card 1: Bayar Tagihan */}
+              <Link 
+                href="/pembayaran"
+                className="flex items-center gap-4 bg-slate-900/50 backdrop-blur-md border border-slate-850 hover:border-amber-400/40 hover:bg-slate-900/80 p-4 rounded-2xl min-w-[250px] max-w-[290px] flex-1 shrink-0 group transition-all duration-300 shadow-lg hover:shadow-amber-500/5 hover:-translate-y-1"
+              >
+                <div className="w-11 h-11 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:text-slate-950 transition-all duration-300 shadow-inner shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-5.25-9h16.5a1.5 1.5 0 011.5 1.5V17.25a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V5.25a1.5 1.5 0 011.5-1.5z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">Bayar Tagihan</h4>
+                  <p className="text-[10px] text-slate-500 font-semibold mt-0.5">Selesaikan cicilan VA Anda</p>
+                </div>
+              </Link>
+
+              {/* Card 2: Pilih Kapling */}
+              <Link 
+                href="/select-unit/v2"
+                className="flex items-center gap-4 bg-slate-900/50 backdrop-blur-md border border-slate-850 hover:border-amber-400/40 hover:bg-slate-900/80 p-4 rounded-2xl min-w-[250px] max-w-[290px] flex-1 shrink-0 group transition-all duration-300 shadow-lg hover:shadow-amber-500/5 hover:-translate-y-1"
+              >
+                <div className="w-11 h-11 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:text-slate-950 transition-all duration-300 shadow-inner shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 9.152c.582.448 1.148.89 1.676 1.345m-7.616-.445l.98-2.94a1.5 1.5 0 011.424-1.027h1.008a1.5 1.5 0 011.424 1.027l.98 2.94m-5.816 0h5.816m-5.816 0A1.5 1.5 0 007.5 10.5v7.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5v-7.5a1.5 1.5 0 00-1.5-1.5m0 0H9.042m0 0L7.5 10.5" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">Pilih Kapling</h4>
+                  <p className="text-[10px] text-slate-500 font-semibold mt-0.5">Pilih kavling unit fisik makam</p>
+                </div>
+              </Link>
+
+              {/* Card 3: Lengkapi KTP */}
+              <Link 
+                href="/verification"
+                className="flex items-center gap-4 bg-slate-900/50 backdrop-blur-md border border-slate-850 hover:border-amber-400/40 hover:bg-slate-900/80 p-4 rounded-2xl min-w-[250px] max-w-[290px] flex-1 shrink-0 group transition-all duration-300 shadow-lg hover:shadow-amber-500/5 hover:-translate-y-1"
+              >
+                <div className="w-11 h-11 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:text-slate-950 transition-all duration-300 shadow-inner shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">Lengkapi KTP</h4>
+                  <p className="text-[10px] text-slate-500 font-semibold mt-0.5">Unggah berkas KTP & data diri</p>
+                </div>
+              </Link>
+
+              {/* Card 4: Makam Saya */}
+              <Link 
+                href="/makam-saya"
+                className="flex items-center gap-4 bg-slate-900/50 backdrop-blur-md border border-slate-850 hover:border-amber-400/40 hover:bg-slate-900/80 p-4 rounded-2xl min-w-[250px] max-w-[290px] flex-1 shrink-0 group transition-all duration-300 shadow-lg hover:shadow-amber-500/5 hover:-translate-y-1"
+              >
+                <div className="w-11 h-11 rounded-xl bg-amber-400/10 flex items-center justify-center text-amber-400 group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-yellow-400 group-hover:text-slate-950 transition-all duration-300 shadow-inner shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">Makam Saya</h4>
+                  <p className="text-[10px] text-slate-500 font-semibold mt-0.5">Atur nama peruntukan makam</p>
+                </div>
+              </Link>
+
+            </div>
+          </div>
+
           {/* TWO PARALLEL CARDS: PATH A & PATH B */}
           <div>
             <h3 className="text-base font-extrabold text-slate-400 uppercase tracking-widest mb-5 ml-1">
