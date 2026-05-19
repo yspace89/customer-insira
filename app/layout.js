@@ -23,9 +23,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#060913]">
-        {children}
-        <BottomBar />
+      <body className="min-h-full flex flex-col items-center justify-start bg-[#090d1a] overflow-x-hidden">
+        <div className="w-full max-w-[480px] min-h-screen bg-[#060913] flex flex-col relative shadow-[0_0_50px_rgba(0,0,0,0.8)] border-x border-slate-900/60">
+          {children}
+          <BottomBar />
+        </div>
       </body>
     </html>
   );

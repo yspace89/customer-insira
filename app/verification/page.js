@@ -90,7 +90,7 @@ export default function VerificationPage() {
     <div className="min-h-screen bg-[#060913]">
       <Sidebar profile={profile} />
       
-      <div className="pl-80 flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-24">
         <Header 
           title="Verifikasi Data" 
           breadcrumbs={['Beranda', 'Verifikasi Data']} 

@@ -118,7 +118,7 @@ export default function PaymentDetailPage() {
 
   if (!payment) {
     return (
-      <div className="min-h-screen bg-[#060913] pl-80 flex flex-col justify-center items-center text-center p-6">
+      <div className="min-h-screen bg-[#060913] flex flex-col justify-center items-center text-center p-6 pb-24">
         <ShieldAlert size={48} className="text-red-500 mb-4" />
         <h3 className="text-lg font-bold text-white">Detail Pembayaran Tidak Ditemukan</h3>
         <button 
@@ -137,7 +137,7 @@ export default function PaymentDetailPage() {
     <div className="min-h-screen bg-[#060913]">
       <Sidebar profile={profile} />
       
-      <div className="pl-80 flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-24">
         <Header 
           title={`Detail Pembayaran: ${payment.transaction_code}`} 
           breadcrumbs={['Beranda', 'Pembayaran', 'Detail']} 

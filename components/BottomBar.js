@@ -106,7 +106,7 @@ export default function BottomBar() {
   return (
     <>
       {/* Main Floating Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 h-16 bg-white/95 backdrop-blur-xl border-t border-slate-200 z-40 lg:hidden flex justify-around items-center px-4 pb-safe shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto h-16 bg-white/95 backdrop-blur-xl border-t border-slate-200 z-40 flex justify-around items-center px-4 pb-safe shadow-2xl">
         
         {/* Left two items */}
         <div className="flex w-2/5 justify-around">
@@ -168,14 +168,14 @@ export default function BottomBar() {
       {/* Drawer Overlay Backdrop */}
       {isDrawerOpen && (
         <div
-          className="fixed inset-0 bg-[#0f294a]/30 backdrop-blur-sm z-45 animate-fade-in lg:hidden"
+          className="fixed inset-0 bg-[#0f294a]/30 backdrop-blur-sm z-45 animate-fade-in"
           onClick={() => setIsDrawerOpen(false)}
         />
       )}
 
       {/* Drawer Modal Panel */}
       {isDrawerOpen && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 rounded-t-2xl z-50 p-6 pb-10 animate-slide-up flex flex-col shadow-2xl lg:hidden max-h-[85vh] overflow-y-auto">
+        <div className="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto bg-white border-t border-slate-200 rounded-t-2xl z-50 p-6 pb-10 animate-slide-up flex flex-col shadow-2xl max-h-[85vh] overflow-y-auto">
           {/* Top Swipe Bar */}
           <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-5" />
 

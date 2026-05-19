@@ -32,6 +32,7 @@ const MENU_ITEMS = [
 ];
 
 export default function Sidebar({ profile }) {
+  return null;
   const pathname = usePathname();
 
   return (

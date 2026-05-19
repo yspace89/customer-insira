@@ -181,16 +181,9 @@ body {
   border-color: rgba(0, 75, 135, 0.3) !important;
 }
 
-/* Responsive Viewport Layout Fixes (Mobile-First overrides) */
-@media (max-width: 1023px) {
-  .pl-80 {
-    padding-left: 0 !important;
-    padding-bottom: 5rem !important; /* Safety padding so content doesn't hide behind BottomBar */
-  }
 
-  main {
-    padding: 1.5rem !important; /* Sleek, high-density padding on mobile instead of desktop p-10 */
-  }
+main {
+  padding: 1.5rem !important; /* Sleek, high-density padding on all platforms */
 }
 
 /* ==========================================================================

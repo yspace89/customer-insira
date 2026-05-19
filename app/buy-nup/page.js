@@ -29,7 +29,7 @@ export default function BuyNupPage() {
   const [loading, setLoading] = useState(true);
 
   // Form states
-  const [unitType, setUnitType] = useState('Single'); // 'Single', 'Double', 'Family', 'Royal'
+  const [unitType, setUnitType] = useState('Single'); // 'Single', 'SinglePremiere', 'Couple', 'CouplePremiere', 'Family', 'SignatureFamily'
   const [quantity, setQuantity] = useState(1);
   const [referral, setReferral] = useState('Pro8a');
 
@@ -49,14 +49,30 @@ export default function BuyNupPage() {
   // Unit pricing (Booking fee values)
   const unitPrices = {
     Single: 1000000,
-    Double: 2000000,
+    SinglePremiere: 1000000,
+    Couple: 2000000,
+    CouplePremiere: 3000000,
     Family: 5000000,
-    Royal: 10000000
+    SignatureFamily: 10000000
   };
 
   const bookingFeeAmount = unitPrices[unitType] * quantity;
 
   useEffect(() => {
+    // Parse URL params
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlType = params.get('type');
+      const urlQty = params.get('qty');
+      
+      if (urlType && ['Single', 'SinglePremiere', 'Couple', 'CouplePremiere', 'Family', 'SignatureFamily'].includes(urlType)) {
+        setUnitType(urlType);
+      }
+      if (urlQty) {
+        setQuantity(Math.max(1, parseInt(urlQty) || 1));
+      }
+    }
+
     async function loadData() {
       try {
         const prof = await getProfile();
@@ -85,12 +101,24 @@ export default function BuyNupPage() {
       // Map unit type string to database ID
       const unitTypeIds = {
         Single: 1,
-        Double: 2,
+        SinglePremiere: 1,
+        Couple: 2,
+        CouplePremiere: 2,
         Family: 3,
-        Royal: 4
+        SignatureFamily: 4
+      };
+
+      const dbTypeNames = {
+        Single: "Single",
+        SinglePremiere: "Single - Premiere",
+        Couple: "Couple",
+        CouplePremiere: "Couple - Premiere",
+        Family: "Family",
+        SignatureFamily: "Signature Family"
       };
       
       const unitTypeId = unitTypeIds[unitType] || 1;
+      const dbTypeName = dbTypeNames[unitType] || unitType;
 
       // Robust payload to prevent Laravel/Kotahati backend validator errors
       const payload = {
@@ -99,13 +127,13 @@ export default function BuyNupPage() {
         Project: 3,
         unit_qty: quantity,
         referral_code: referral,
-        priority_unit_type: unitType,
+        priority_unit_type: dbTypeName,
         unit_type_id: unitTypeId,
         units: [
           {
             unit_type_id: unitTypeId,
-            name: unitType,
-            type: unitType,
+            name: dbTypeName,
+            type: dbTypeName,
             qty: quantity,
             quantity: quantity,
             unit_qty: quantity
@@ -175,7 +203,7 @@ export default function BuyNupPage() {
     <div className="min-h-screen bg-[#f8fafc]">
       <Sidebar profile={profile} />
       
-      <div className="pl-80 flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-24">
         <Header 
           title="Beli NUP" 
           breadcrumbs={['Beranda', 'Nomor Urut Pemesanan', 'Beli NUP']} 
@@ -231,22 +259,26 @@ export default function BuyNupPage() {
                 
                 {/* SELECT UNIT TYPE DROPDOWN */}
                 <div className="space-y-2">
-                  <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
-                    Tipe Unit Diminati <span className="text-red-500">*</span>
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
+                      Tipe Unit Diminati <span className="text-red-500">*</span>
+                    </label>
+                    <span className="text-[8px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-bold uppercase">Terkunci</span>
+                  </div>
                   
                   <div className="relative">
                     <select
                       value={unitType}
-                      onChange={(e) => setUnitType(e.target.value)}
-                      className="w-full bg-[#f0f4ff]/80 border border-slate-200 rounded-2xl py-3.5 px-4 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#004b87]/15 focus:border-[#004b87] transition-all font-semibold appearance-none cursor-pointer"
+                      disabled={true}
+                      className="w-full bg-slate-100 border border-slate-200 rounded-2xl py-3.5 px-4 text-xs text-slate-500 cursor-not-allowed font-semibold appearance-none"
                     >
                       <option value="Single">Single</option>
-                      <option value="Double">Double</option>
+                      <option value="SinglePremiere">Single - Premiere</option>
+                      <option value="Couple">Couple</option>
+                      <option value="CouplePremiere">Couple - Premiere</option>
                       <option value="Family">Family</option>
-                      <option value="Royal">Royal</option>
+                      <option value="SignatureFamily">Signature Family</option>
                     </select>
-                    <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                   </div>
                 </div>
 
@@ -254,37 +286,35 @@ export default function BuyNupPage() {
                 {unitType && (
                   <div className="space-y-4 pt-2 animate-in fade-in duration-300">
                     <div className="flex gap-2">
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-                        {unitType}
-                        <button 
-                          onClick={() => setUnitType('')} 
-                          className="hover:text-white transition-colors cursor-pointer"
-                        >
-                          ×
-                        </button>
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-black text-slate-400 bg-slate-100 border border-slate-200 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                        {unitType === 'SinglePremiere' ? 'Single - Premiere' : unitType === 'CouplePremiere' ? 'Couple - Premiere' : unitType === 'SignatureFamily' ? 'Signature Family' : unitType}
                       </span>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
-                        Jumlah {unitType} <span className="text-red-500">*</span>
-                      </label>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center justify-between">
+                        <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
+                          Jumlah {unitType === 'SinglePremiere' ? 'Single - Premiere' : unitType === 'CouplePremiere' ? 'Couple - Premiere' : unitType === 'SignatureFamily' ? 'Signature Family' : unitType} <span className="text-red-500">*</span>
+                        </label>
+                        <span className="text-[8px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-bold uppercase">Terkunci</span>
+                      </div>
+                      
+                      <div className="flex items-center gap-2 opacity-70 pointer-events-none">
                         <button
-                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="w-11 h-11 rounded-xl bg-[#f0f4ff]/80 border border-slate-200 hover:border-slate-300 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer animate-in zoom-in-95"
+                          disabled={true}
+                          className="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold cursor-not-allowed"
                         >
                           -
                         </button>
                         <input
                           type="number"
                           value={quantity}
-                          onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                          className="w-16 h-11 bg-white border border-slate-200 rounded-xl text-center text-xs text-slate-900 focus:outline-none font-extrabold"
+                          readOnly={true}
+                          className="w-16 h-11 bg-slate-50 border border-slate-200 rounded-xl text-center text-xs text-slate-500 focus:outline-none font-extrabold cursor-not-allowed"
                         />
                         <button
-                          onClick={() => setQuantity(quantity + 1)}
-                          className="w-11 h-11 rounded-xl bg-[#f0f4ff]/80 border border-slate-200 hover:border-slate-300 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer animate-in zoom-in-95"
+                          disabled={true}
+                          className="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 flex items-center justify-center text-sm font-bold cursor-not-allowed"
                         >
                           +
                         </button>

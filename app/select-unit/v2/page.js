@@ -44,7 +44,7 @@ export default function SelectUnitPage() {
     <div className="min-h-screen bg-[#060913]">
       <Sidebar profile={profile} />
       
-      <div className="pl-80 flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen pb-24">
         <Header 
           title="Pilih Unit" 
           breadcrumbs={['Beranda', 'Pilih Unit']} 
@@ -113,7 +113,7 @@ export default function SelectUnitPage() {
                 </p>
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {unitsData.bisa_memilih.map((unit) => (
                   <div 
                     key={unit.id}
@@ -186,7 +186,7 @@ export default function SelectUnitPage() {
                 </p>
               </div>
             ) : (
-              <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6">
                 {unitsData.belum_bisa_memilih.map((unit) => (
                   <div 
                     key={unit.id}
