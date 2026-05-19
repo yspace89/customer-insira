@@ -45,23 +45,23 @@ export default function NupPage() {
         
         <main className="flex-1 p-10 max-w-7xl mx-auto w-full space-y-8 animate-in fade-in duration-300">
           {/* NUP BANNER CARD */}
-          <div className="bg-[#0b1329] border border-blue-950 rounded-3xl p-6.5 sm:p-8 flex flex-col gap-4.5 shadow-xl relative overflow-hidden">
-            <div className="absolute right-0 top-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="bg-[#004b87] border border-[#003d70] rounded-3xl p-6.5 sm:p-8 flex flex-col gap-4.5 shadow-xl relative overflow-hidden text-white">
+            <div className="absolute right-0 top-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
             
             <div className="flex items-center gap-2.5">
-              <Ticket className="text-blue-400" size={20} />
+              <Ticket className="text-[#fabc0c]" size={20} />
               <h2 className="text-base font-black text-white uppercase tracking-wider">
                 NUP (Nomor Urut Pemesanan)
               </h2>
             </div>
             
-            <p className="text-xs text-slate-350 leading-relaxed font-semibold max-w-3xl">
+            <p className="text-xs text-blue-100 leading-relaxed font-semibold max-w-3xl">
               NUP adalah nomor antrian pemesanan yang membantu Anda mendapatkan giliran secara adil saat memilih unit makam di Insira Memorial Park. Dapatkan NUP Anda hari ini untuk mengamankan lokasi kavling makam terbaik untuk keluarga tercinta.
             </p>
             
             <Link
               href="/buy-nup?menu=nup"
-              className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-black px-6.5 py-3.5 rounded-2xl cursor-pointer w-fit uppercase tracking-widest transition-all hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-blue-500/10 flex items-center gap-2"
+              className="bg-[#fabc0c] hover:bg-[#e2a900] text-[#004b87] text-xs font-black px-6.5 py-3.5 rounded-2xl cursor-pointer w-fit uppercase tracking-widest transition-all hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-[#fabc0c]/10 flex items-center gap-2"
             >
               <Ticket size={14} />
               <span>Beli NUP Sekarang</span>
