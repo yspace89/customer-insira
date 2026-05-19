@@ -5,14 +5,14 @@
   --foreground: #0f172a;
   --card-bg: rgba(255, 255, 255, 0.85);
   --card-border: rgba(226, 232, 240, 0.8);
-  --brand-gold: #c69818;
-  --brand-gold-dark: #9b730f;
-  --brand-navy: #0f294a;
-  --brand-navy-light: #f1f5f9;
+  --brand-gold: #fabc0c;
+  --brand-gold-dark: #e2a900;
+  --brand-navy: #004b87;
+  --brand-navy-light: #f0f4ff;
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
-  --glow-color: rgba(15, 41, 74, 0.03);
+  --glow-color: rgba(0, 75, 135, 0.03);
 }
 
 @theme inline {
@@ -230,7 +230,7 @@ main h3.text-white,
 main h4.text-white,
 main .text-slate-100,
 main .text-slate-200 {
-  color: #0f294a !important;
+  color: var(--brand-navy) !important;
 }
 
 main .text-slate-300,
@@ -241,7 +241,7 @@ main .text-slate-500 {
 
 main .text-amber-400,
 form .text-amber-400 {
-  color: #b45309 !important; /* High contrast dark amber */
+  color: var(--brand-gold) !important; /* Rich gold/yellow accent */
 }
 
 /* 3. Cards, sheets & inner wrappers */
@@ -272,7 +272,7 @@ main textarea,
 form input,
 form select,
 form textarea {
-  background-color: #ffffff !important;
+  background-color: var(--brand-navy-light) !important; /* Gorgeous soft light blue background fill! */
   color: #0f172a !important;
   border: 1px solid #cbd5e1 !important;
 }
@@ -289,7 +289,7 @@ form input:focus,
 form select:focus,
 form textarea:focus {
   border-color: var(--brand-gold) !important;
-  box-shadow: 0 0 0 2px rgba(198, 152, 24, 0.15) !important;
+  box-shadow: 0 0 0 2px rgba(250, 188, 12, 0.15) !important;
   outline: none !important;
 }
 
