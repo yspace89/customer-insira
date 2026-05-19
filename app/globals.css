@@ -189,3 +189,187 @@ body {
     padding: 1.5rem !important; /* Sleek, high-density padding on mobile instead of desktop p-10 */
   }
 }
+
+/* ==========================================================================
+   GLOBAL LIGHT THEME FORCE OVERRIDES (Clean, Premium, High-Contrast)
+   ========================================================================== */
+
+/* 1. Wrapper backgrounds */
+body,
+.min-h-screen,
+div[class*="bg-[#060913]"],
+div[class*="bg-slate-950"],
+.bg-\[\#060913\],
+.bg-slate-950 {
+  background-color: var(--background) !important;
+}
+
+/* Exempt Welcome Banner gradient so it remains corporate navy */
+.bg-gradient-to-r.from-slate-900\/60,
+.bg-gradient-to-r.from-slate-900 {
+  background-image: linear-gradient(to right, #091122 0%, #060913 100%) !important;
+  border-color: #1e293b !important;
+}
+
+.bg-gradient-to-r.from-slate-900\/60 * {
+  color: #ffffff !important;
+}
+.bg-gradient-to-r.from-slate-900\/60 .text-amber-400,
+.bg-gradient-to-r.from-slate-900\/60 .gold-text {
+  color: var(--brand-gold) !important;
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+/* 2. Text colors inside content area */
+main h1, main h2, main h3, main h4, main h5, main h6,
+main .text-white,
+main h1.text-white,
+main h2.text-white,
+main h3.text-white,
+main h4.text-white,
+main .text-slate-100,
+main .text-slate-200 {
+  color: #0f294a !important;
+}
+
+main .text-slate-300,
+main .text-slate-400,
+main .text-slate-500 {
+  color: #475569 !important; /* Clear Slate gray */
+}
+
+main .text-amber-400,
+form .text-amber-400 {
+  color: #b45309 !important; /* High contrast dark amber */
+}
+
+/* 3. Cards, sheets & inner wrappers */
+.glass-card,
+main .glass-card,
+main .bg-slate-900,
+main .bg-slate-950\/40,
+main .bg-slate-950\/60,
+main .bg-slate-900\/50,
+main div[class*="bg-slate-900"],
+main div[class*="bg-slate-950"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Document rows inside verification and similar elements */
+main .bg-slate-950\/40 {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* 4. Form elements */
+main input,
+main select,
+main textarea,
+form input,
+form select,
+form textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+main input::placeholder,
+main textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+main input:focus,
+main select:focus,
+main textarea:focus,
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: var(--brand-gold) !important;
+  box-shadow: 0 0 0 2px rgba(198, 152, 24, 0.15) !important;
+  outline: none !important;
+}
+
+/* 5. Inactive buttons (like 'Lihat' or 'Batal') */
+main button.bg-slate-900,
+main .bg-slate-900,
+main button.bg-slate-950\/20,
+main .bg-slate-950\/20,
+form button.border-slate-800 {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+main button.bg-slate-900:hover,
+main button.bg-slate-950\/20:hover,
+form button.border-slate-800:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Tab swiper panel background */
+main .bg-slate-950\/60.border-slate-900 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+.custom-tab-inactive {
+  background-color: transparent !important;
+  color: #64748b !important;
+  border: 1px solid transparent !important;
+}
+.custom-tab-inactive:hover {
+  background-color: rgba(15, 41, 74, 0.05) !important;
+  color: #0f294a !important;
+}
+
+/* Modal overlay backdrop fix */
+.fixed.inset-0[class*="bg-"] {
+  background-color: rgba(15, 41, 74, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Dashboard horizontal quick access cards overrides */
+main a.bg-white {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+main a.bg-white:hover {
+  background-color: #f8fafc !important;
+  border-color: var(--brand-gold) !important;
+}
+
+/* Tables styling */
+main table {
+  background-color: #ffffff !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+main thead tr {
+  background-color: #f1f5f9 !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+}
+
+main th {
+  color: #475569 !important;
+  font-weight: 700 !important;
+}
+
+main tbody tr {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+main tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+main td {
+  color: #0f172a !important;
+}
