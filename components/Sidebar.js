@@ -39,17 +39,18 @@ export default function Sidebar({ profile }) {
       <div>
         {/* LOGO */}
         <div className="flex items-center gap-3 mb-10 px-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/25">
-            {/* Geometric Octagram SVG */}
-            <svg viewBox="0 0 24 24" className="w-6 h-6 text-slate-950 font-bold" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 2L15 9H22L16 14L18 21L12 17L6 21L8 14L2 9H9L12 2Z" fill="currentColor"/>
+          <div className="w-10 h-10 rounded-full bg-[#004b87] flex items-center justify-center shadow-lg shadow-[#004b87]/15">
+            {/* Geometric Custom Gold Star SVG inside white circle or direct */}
+            <svg className="w-6 h-6 text-[#fabc0c]" viewBox="0 0 60 60" fill="currentColor">
+              <path d="M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z" />
+              <circle cx="30" cy="30" r="4" fill="white" />
             </svg>
           </div>
           <div>
-            <div className="text-lg font-black tracking-widest text-[#0f294a] flex items-center">
+            <div className="text-lg font-black tracking-widest text-[#004b87] flex items-center">
               INSIRA
             </div>
-            <div className="text-[9px] font-bold text-amber-500 tracking-[0.25em] uppercase">
+            <div className="text-[9px] font-bold text-[#fabc0c] tracking-[0.25em] uppercase">
               MEMORIAL PARK
             </div>
           </div>
@@ -67,14 +68,14 @@ export default function Sidebar({ profile }) {
                 href={item.path}
                 className={`group flex items-center gap-3.5 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   isActive 
-                    ? 'bg-amber-500/10 text-amber-600 border-l-4 border-amber-500 shadow-sm pl-5'
-                    : 'text-slate-500 hover:text-[#0f294a] hover:bg-slate-50 pl-4'
+                    ? 'bg-[#004b87]/10 text-[#004b87] border-l-4 border-[#004b87] shadow-sm pl-5'
+                    : 'text-slate-500 hover:text-[#004b87] hover:bg-slate-50 pl-4'
                 }`}
               >
                 <Icon 
                   size={18} 
                   className={`transition-colors duration-300 ${
-                    isActive ? 'text-amber-500' : 'text-slate-400 group-hover:text-[#0f294a]'
+                    isActive ? 'text-[#004b87]' : 'text-slate-400 group-hover:text-[#004b87]'
                   }`} 
                 />
                 <span>{item.label}</span>
@@ -88,10 +89,10 @@ export default function Sidebar({ profile }) {
       <div className="border-t border-slate-200 pt-6">
         <div className="flex items-center gap-3 px-2 mb-4">
           <div className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center overflow-hidden">
-            <User size={18} className="text-amber-500" />
+            <User size={18} className="text-[#004b87]" />
           </div>
           <div className="truncate">
-            <h4 className="text-sm font-bold text-[#0f294a] truncate">
+            <h4 className="text-sm font-bold text-[#004b87] truncate">
               {profile?.name || 'Yahya Test Empat'}
             </h4>
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
