@@ -14,8 +14,8 @@ export default function Header({ title, breadcrumbs = [], profile }) {
       <div className="flex items-center">
         {/* Mobile Logo */}
         <Link href="/dashboard" className="flex items-center gap-2 lg:hidden">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/25">
-            <svg viewBox="0 0 24 24" className="w-4 h-4 text-slate-950 fill-current">
+          <div className="w-8 h-8 rounded-lg bg-[#004b87] flex items-center justify-center shadow-lg shadow-[#004b87]/15">
+            <svg viewBox="0 0 24 24" className="w-4 h-4 text-white fill-current">
               <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.786 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192L12 .587z"/>
             </svg>
           </div>
@@ -31,7 +31,7 @@ export default function Header({ title, breadcrumbs = [], profile }) {
               {breadcrumbs.map((crumb, idx) => (
                 <React.Fragment key={idx}>
                   {idx > 0 && <span>/</span>}
-                  <span className={idx === breadcrumbs.length - 1 ? 'text-amber-600' : 'text-slate-400'}>
+                  <span className={idx === breadcrumbs.length - 1 ? 'text-[#004b87]' : 'text-slate-400'}>
                     {crumb}
                   </span>
                 </React.Fragment>
@@ -45,18 +45,18 @@ export default function Header({ title, breadcrumbs = [], profile }) {
       {/* RIGHT: USER OPTIONS */}
       <div className="flex items-center gap-3 lg:gap-6">
         {/* NOTIFICATIONS BELL */}
-        <button className="relative w-9 h-9 lg:w-10 lg:h-10 rounded-xl bg-slate-50 border border-slate-200 hover:border-amber-400/50 flex items-center justify-center text-slate-500 hover:text-[#0f294a] transition-all duration-300">
+        <button className="relative w-9 h-9 lg:w-10 lg:h-10 rounded-xl bg-slate-50 border border-slate-200 hover:border-[#004b87]/50 flex items-center justify-center text-slate-500 hover:text-[#0f294a] transition-all duration-300">
           <Bell size={16} className="lg:w-4.5 lg:h-4.5" />
-          <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-amber-500 ring-4 ring-white"></span>
+          <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-[#004b87] ring-4 ring-white"></span>
         </button>
  
         {/* PROFILE CHIP */}
         <div className="flex items-center gap-2 lg:gap-3 bg-slate-55/80 hover:bg-slate-100/80 border border-slate-200 hover:border-slate-300 px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl lg:rounded-2xl transition-all duration-300 group cursor-pointer relative">
-          <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center text-slate-900 font-bold overflow-hidden shadow-md">
+          <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg lg:rounded-xl bg-[#f0f4ff] flex items-center justify-center text-[#004b87] font-bold overflow-hidden shadow-sm">
             <User size={14} className="lg:w-4" />
           </div>
           <div className="hidden sm:flex flex-col pr-1">
-            <span className="text-[11px] lg:text-xs font-bold text-[#0f294a] group-hover:text-amber-600 transition-colors">
+            <span className="text-[11px] lg:text-xs font-bold text-[#0f294a] group-hover:text-[#004b87] transition-colors">
               {profile?.name || 'Yahya Test Empat'}
             </span>
             <span className="text-[8px] lg:text-[9px] font-bold text-slate-400 uppercase tracking-wider">
