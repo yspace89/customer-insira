@@ -40,17 +40,17 @@ export default function Sidebar({ profile }) {
         {/* LOGO */}
         <div className="flex items-center gap-3 mb-10 px-2">
           <div className="w-10 h-10 rounded-full bg-[#004b87] flex items-center justify-center shadow-lg shadow-[#004b87]/15">
-            {/* Geometric Custom Gold Star SVG inside white circle or direct */}
-            <svg className="w-6 h-6 text-[#fabc0c]" viewBox="0 0 60 60" fill="currentColor">
+            {/* Elegant Custom White Star SVG */}
+            <svg className="w-6 h-6 text-white" viewBox="0 0 60 60" fill="currentColor">
               <path d="M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z" />
-              <circle cx="30" cy="30" r="4" fill="white" />
+              <circle cx="30" cy="30" r="4" fill="#004b87" />
             </svg>
           </div>
           <div>
             <div className="text-lg font-black tracking-widest text-[#004b87] flex items-center">
               INSIRA
             </div>
-            <div className="text-[9px] font-bold text-[#fabc0c] tracking-[0.25em] uppercase">
+            <div className="text-[9px] font-bold text-slate-400 tracking-[0.25em] uppercase">
               MEMORIAL PARK
             </div>
           </div>

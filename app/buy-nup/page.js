@@ -172,7 +172,7 @@ export default function BuyNupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#060913]">
+    <div className="min-h-screen bg-[#f8fafc]">
       <Sidebar profile={profile} />
       
       <div className="pl-80 flex flex-col min-h-screen">
@@ -194,8 +194,8 @@ export default function BuyNupPage() {
           </Link>
 
           {/* BUY NUP DESCRIPTION BANNER */}
-          <div className="bg-[#0b1329] border border-blue-950 rounded-3xl p-6.5 sm:p-8 flex items-start gap-4 shadow-xl relative overflow-hidden">
-            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+          <div className="bg-[#004b87] border border-[#003d70] rounded-3xl p-6.5 sm:p-8 flex items-start gap-4 shadow-xl relative overflow-hidden text-white">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-white shrink-0">
               <Ticket size={24} />
             </div>
             
@@ -203,7 +203,7 @@ export default function BuyNupPage() {
               <h2 className="text-base font-black text-white uppercase tracking-wider">
                 NUP (Nomor Urut Pemesanan)
               </h2>
-              <p className="text-xs text-slate-350 leading-relaxed font-semibold">
+              <p className="text-xs text-blue-100 leading-relaxed font-semibold">
                 NUP adalah nomor yang memastikan Anda terdaftar sebagai calon pembeli. Jika Anda ingin mengikuti Customer Gathering dan mendapatkan informasi eksklusif tentang unit terbaik, maka NUP adalah langkah pertama yang perlu Anda ambil.
               </p>
             </div>
@@ -224,22 +224,22 @@ export default function BuyNupPage() {
             
             {/* COLUMN 1 & 2: FORM TENTUKAN TIPE UNIT */}
             <div className="lg:col-span-2 space-y-6">
-              <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
-                <h3 className="text-sm font-black text-white uppercase tracking-wider border-b border-slate-900 pb-3 flex items-center gap-2">
+              <div className="glass-card rounded-3xl p-6 sm:p-8 border border-slate-200/80 space-y-6">
+                <h3 className="text-sm font-black text-[#004b87] uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
                   <span>Tentukan Tipe Unit</span>
                 </h3>
                 
                 {/* SELECT UNIT TYPE DROPDOWN */}
                 <div className="space-y-2">
                   <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
-                    Tipe Unit Diminati <span className="text-amber-500">*</span>
+                    Tipe Unit Diminati <span className="text-red-500">*</span>
                   </label>
                   
                   <div className="relative">
                     <select
                       value={unitType}
                       onChange={(e) => setUnitType(e.target.value)}
-                      className="w-full bg-slate-950/40 border border-slate-800 rounded-2xl py-3.5 px-4 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500/10 focus:border-amber-400 transition-all font-semibold appearance-none cursor-pointer"
+                      className="w-full bg-[#f0f4ff]/80 border border-slate-200 rounded-2xl py-3.5 px-4 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#004b87]/15 focus:border-[#004b87] transition-all font-semibold appearance-none cursor-pointer"
                     >
                       <option value="Single">Single</option>
                       <option value="Double">Double</option>
@@ -267,12 +267,12 @@ export default function BuyNupPage() {
 
                     <div className="space-y-2">
                       <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
-                        Jumlah {unitType} <span className="text-amber-500">*</span>
+                        Jumlah {unitType} <span className="text-red-500">*</span>
                       </label>
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="w-11 h-11 rounded-xl bg-slate-950/40 border border-slate-800 hover:border-slate-700 text-white flex items-center justify-center text-sm font-bold transition-all cursor-pointer"
+                          className="w-11 h-11 rounded-xl bg-[#f0f4ff]/80 border border-slate-200 hover:border-slate-300 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer animate-in zoom-in-95"
                         >
                           -
                         </button>
@@ -280,11 +280,11 @@ export default function BuyNupPage() {
                           type="number"
                           value={quantity}
                           onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                          className="w-16 h-11 bg-slate-950/40 border border-slate-800 rounded-xl text-center text-xs text-white focus:outline-none font-extrabold"
+                          className="w-16 h-11 bg-white border border-slate-200 rounded-xl text-center text-xs text-slate-900 focus:outline-none font-extrabold"
                         />
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="w-11 h-11 rounded-xl bg-slate-950/40 border border-slate-800 hover:border-slate-700 text-white flex items-center justify-center text-sm font-bold transition-all cursor-pointer"
+                          className="w-11 h-11 rounded-xl bg-[#f0f4ff]/80 border border-slate-200 hover:border-slate-300 text-slate-700 flex items-center justify-center text-sm font-bold transition-all cursor-pointer animate-in zoom-in-95"
                         >
                           +
                         </button>
@@ -296,38 +296,38 @@ export default function BuyNupPage() {
                 {/* REFERRAL CODE INPUT */}
                 <div className="space-y-2 pt-2">
                   <label className="text-[10px] text-slate-500 font-bold block uppercase tracking-wider">
-                    Kode Referral <span className="text-amber-500">*</span>
+                    Kode Referral <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     value={referral}
                     onChange={(e) => setReferral(e.target.value)}
                     placeholder="Masukkan kode referral sales agent..."
-                    className="w-full bg-slate-950/40 border border-slate-800 rounded-2xl py-3.5 px-4 text-xs text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-500/10 focus:border-amber-400 transition-all font-semibold"
+                    className="w-full bg-[#f0f4ff]/80 border border-slate-200 rounded-2xl py-3.5 px-4 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#004b87]/15 focus:border-[#004b87] transition-all font-semibold"
                   />
                 </div>
 
                 {/* BOOKING FEE CALCULATOR BOX */}
                 {unitType && (
-                  <div className="bg-[#0b101d] border border-slate-850 p-5 rounded-2xl space-y-4 animate-in slide-in-from-bottom-2 duration-300">
+                  <div className="bg-[#f8fafc] border border-slate-200/80 p-5 rounded-2xl space-y-4 animate-in slide-in-from-bottom-2 duration-300">
                     <div className="flex items-start gap-3">
                       <Info size={16} className="text-slate-450 shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="text-[10px] font-bold text-white uppercase tracking-wider">Biaya Booking Fee</h4>
+                        <h4 className="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Biaya Booking Fee</h4>
                         <p className="text-[10px] text-slate-400 font-semibold leading-relaxed mt-1">
                           Biaya Booking Fee dibayarkan pada tahap berikutnya (setelah NUP). Dapat berubah jika Anda mengubah tipe unit diminati & jumlah tipe unit yang dipesan.
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-900/60 flex items-center justify-between text-xs font-bold">
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
                       <span className="text-slate-400">{unitType} x{quantity}</span>
-                      <span className="text-white">Rp {bookingFeeAmount.toLocaleString('id-ID')}</span>
+                      <span className="text-slate-800 font-black">Rp {bookingFeeAmount.toLocaleString('id-ID')}</span>
                     </div>
 
-                    <div className="flex items-center justify-between text-xs font-black border-t border-slate-900/60 pt-3">
+                    <div className="flex items-center justify-between text-xs font-black border-t border-slate-100 pt-3">
                       <span className="text-slate-400 uppercase tracking-wider">Total Harga</span>
-                      <span className="text-amber-400">Rp {bookingFeeAmount.toLocaleString('id-ID')}</span>
+                      <span className="text-[#004b87] text-sm">Rp {bookingFeeAmount.toLocaleString('id-ID')}</span>
                     </div>
                   </div>
                 )}
@@ -336,26 +336,26 @@ export default function BuyNupPage() {
 
             {/* COLUMN 3: BIAYA NUP SIDEBAR CARD */}
             <div className="space-y-6">
-              <div className="glass-card rounded-3xl p-6 border border-slate-800 space-y-5">
-                <h3 className="text-sm font-black text-white uppercase tracking-wider border-b border-slate-900 pb-3 flex items-center gap-2">
+              <div className="glass-card rounded-3xl p-6 border border-slate-200/80 space-y-5">
+                <h3 className="text-sm font-black text-[#004b87] uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
                   <span>Biaya NUP</span>
                 </h3>
                 
                 <div className="space-y-4.5">
                   <div className="flex items-center justify-between text-xs font-bold">
                     <span className="text-slate-500 uppercase">NUP</span>
-                    <span className="text-white">Rp. 0</span>
+                    <span className="text-slate-800">Rp. 0</span>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-black border-t border-slate-900 pt-4">
+                  <div className="flex items-center justify-between text-xs font-black border-t border-slate-100 pt-4">
                     <span className="text-slate-500 uppercase tracking-widest">Total</span>
-                    <span className="text-amber-400">Rp. 0</span>
+                    <span className="text-[#004b87] text-sm font-black">Rp. 0</span>
                   </div>
 
                   <button
                     onClick={handlePurchase}
                     disabled={!unitType || !referral}
-                    className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 disabled:from-slate-800 disabled:to-slate-850 disabled:text-slate-500 disabled:cursor-not-allowed text-slate-950 text-xs font-black py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98] shadow-lg shadow-amber-500/5 uppercase tracking-widest mt-2"
+                    className="w-full bg-[#004b87] hover:bg-[#003d70] disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed text-white text-xs font-black py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98] shadow-lg shadow-[#004b87]/5 uppercase tracking-widest mt-2"
                   >
                     <span>Beli</span>
                   </button>

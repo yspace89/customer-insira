@@ -36,14 +36,14 @@ export default function LoginPage() {
           <div className="flex items-center gap-3 mb-10">
             <div className="w-10 h-10 rounded-full bg-transparent flex items-center justify-center">
               {/* Elegant insira logo star pattern */}
-              <svg className="w-9 h-9 text-[#fabc0c]" viewBox="0 0 60 60" fill="currentColor">
+              <svg className="w-9 h-9 text-[#004b87]" viewBox="0 0 60 60" fill="currentColor">
                 <path d="M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z" />
                 <circle cx="30" cy="30" r="4" fill="white" />
               </svg>
             </div>
             <div>
               <span className="text-base font-black tracking-widest text-[#004b87] block leading-none">INSIRA</span>
-              <span className="text-[7px] font-bold text-[#fabc0c] tracking-[0.28em] uppercase block mt-1">MEMORIAL PARK</span>
+              <span className="text-[7px] font-bold text-slate-400 tracking-[0.28em] uppercase block mt-1">MEMORIAL PARK</span>
             </div>
           </div>
 
@@ -125,7 +125,7 @@ export default function LoginPage() {
             </div>
 
             <div className="flex justify-end pt-1">
-              <a href="#" className="text-[10px] font-extrabold text-[#fabc0c] hover:text-[#e2a900] transition-colors uppercase tracking-widest">
+              <a href="#" className="text-[10px] font-extrabold text-[#004b87] hover:underline transition-all uppercase tracking-widest">
                 Lupa kata sandi?
               </a>
             </div>
@@ -144,7 +144,7 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-center gap-2 pt-4">
               <span className="text-xs text-slate-500 font-semibold">Belum punya akun?</span>
-              <a href="#" className="text-xs font-bold text-[#fabc0c] hover:text-[#e2a900] transition-colors">Daftar Sekarang</a>
+              <a href="#" className="text-xs font-bold text-[#004b87] hover:underline transition-all">Daftar Sekarang</a>
             </div>
           </form>
         </div>
@@ -157,13 +157,13 @@ export default function LoginPage() {
 
         <div className="relative text-center max-w-[460px] mx-auto flex flex-col items-center z-20">
           <div className="mb-8">
-            <svg className="w-24 h-24 text-[#fabc0c]" viewBox="0 0 60 60" fill="currentColor">
+            <svg className="w-24 h-24 text-white" viewBox="0 0 60 60" fill="currentColor">
               <path d="M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z" />
               <circle cx="30" cy="30" r="5" fill="#004b87" />
             </svg>
             <div className="mt-4">
               <span className="text-2xl font-black tracking-[0.2em] text-white block leading-none">INSIRA</span>
-              <span className="text-[9px] font-bold text-[#fabc0c] tracking-[0.3em] uppercase block mt-1">MEMORIAL PARK</span>
+              <span className="text-[9px] font-bold text-white/60 tracking-[0.3em] uppercase block mt-1">MEMORIAL PARK</span>
             </div>
           </div>
           <h2 className="text-3xl font-extrabold text-white leading-tight tracking-tight">

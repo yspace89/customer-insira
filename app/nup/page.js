@@ -49,7 +49,7 @@ export default function NupPage() {
             <div className="absolute right-0 top-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
             
             <div className="flex items-center gap-2.5">
-              <Ticket className="text-[#fabc0c]" size={20} />
+              <Ticket className="text-white" size={20} />
               <h2 className="text-base font-black text-white uppercase tracking-wider">
                 NUP (Nomor Urut Pemesanan)
               </h2>
@@ -61,7 +61,7 @@ export default function NupPage() {
             
             <Link
               href="/buy-nup?menu=nup"
-              className="bg-[#fabc0c] hover:bg-[#e2a900] text-[#004b87] text-xs font-black px-6.5 py-3.5 rounded-2xl cursor-pointer w-fit uppercase tracking-widest transition-all hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-[#fabc0c]/10 flex items-center gap-2"
+              className="bg-white hover:bg-blue-50 text-[#004b87] text-xs font-black px-6.5 py-3.5 rounded-2xl cursor-pointer w-fit uppercase tracking-widest transition-all hover:scale-[1.01] active:scale-[0.98] shadow-lg shadow-white/5 flex items-center gap-2"
             >
               <Ticket size={14} />
               <span>Beli NUP Sekarang</span>
@@ -79,7 +79,7 @@ export default function NupPage() {
             <div className="flex items-center gap-4 shrink-0">
               {/* Search */}
               <div className="relative group w-72">
-                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-amber-400 transition-colors" />
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#004b87] transition-colors" />
                 <input
                   type="text"
                   placeholder="Cari transaksi NUP..."
@@ -88,14 +88,14 @@ export default function NupPage() {
                     setSearch(e.target.value);
                     setPage(1);
                   }}
-                  className="w-full bg-slate-950/40 border border-slate-800 rounded-2xl py-3 pl-11 pr-4 text-xs text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-amber-500/10 focus:border-amber-400 transition-all font-semibold glow-input"
+                  className="w-full bg-slate-950/40 border border-slate-800 rounded-2xl py-3 pl-11 pr-4 text-xs text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-[#004b87]/10 focus:border-[#004b87] transition-all font-semibold glow-input"
                 />
               </div>
               
               {/* Beli NUP CTA */}
               <Link 
                 href="/buy-nup?menu=nup"
-                className="gold-gradient gold-gradient-hover text-slate-950 text-xs font-black px-5 py-3 rounded-2xl cursor-pointer flex items-center gap-2 shadow-lg shadow-amber-500/5 uppercase tracking-widest transition-all hover:scale-[1.01]"
+                className="bg-[#004b87] hover:bg-[#003d70] text-white text-xs font-black px-5 py-3 rounded-2xl cursor-pointer flex items-center gap-2 shadow-lg shadow-[#004b87]/5 uppercase tracking-widest transition-all hover:scale-[1.01]"
               >
                 <Ticket size={14} />
                 <span>Beli NUP Baru</span>
@@ -106,7 +106,7 @@ export default function NupPage() {
           {/* LIST OF CARDS */}
           {loading ? (
             <div className="flex justify-center py-20">
-              <div className="w-8 h-8 border-4 border-amber-400/20 border-t-amber-400 rounded-full animate-spin"></div>
+              <div className="w-8 h-8 border-4 border-[#004b87]/20 border-t-[#004b87] rounded-full animate-spin"></div>
             </div>
           ) : (nupData?.items || []).length === 0 ? (
             <div className="glass-card rounded-3xl p-16 text-center max-w-lg mx-auto border border-slate-800/80">
@@ -121,7 +121,7 @@ export default function NupPage() {
               {(nupData?.items || []).map((nup) => (
                 <div 
                   key={nup.id} 
-                  className="glass-card rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row justify-between lg:items-center gap-6 border-l-4 border-l-amber-400 relative overflow-hidden"
+                  className="glass-card rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row justify-between lg:items-center gap-6 border-l-4 border-l-[#004b87] relative overflow-hidden"
                 >
                   <div className="space-y-4 max-w-xl">
                     <div className="flex items-center gap-3 flex-wrap">
@@ -163,7 +163,7 @@ export default function NupPage() {
                     {!nup.has_booking_fee ? (
                       <Link
                         href="/booking-fee"
-                        className="w-full lg:w-auto bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 text-xs font-black px-6 py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98] shadow-lg shadow-amber-500/10 uppercase tracking-widest"
+                        className="w-full lg:w-auto bg-[#004b87] hover:bg-[#003d70] text-white text-xs font-black px-6 py-4 rounded-2xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.98] shadow-lg shadow-[#004b87]/10 uppercase tracking-widest"
                       >
                         <span>Lanjutkan ke Booking Fee</span>
                         <ChevronRight size={14} />
