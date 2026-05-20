@@ -32,7 +32,10 @@ import {
   ChevronDown,
   CheckSquare,
   Bookmark,
-  TrendingDown
+  TrendingDown,
+  Building,
+  Smartphone,
+  QrCode
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -70,6 +73,8 @@ export default function DashboardPage() {
   const [invoiceNumber, setInvoiceNumber] = useState('');
   const [nupCode, setNupCode] = useState('');
   const [nupMethod, setNupMethod] = useState('nup'); // 'nup' (Rp 0 standard) or 'booking' (paid direct)
+  const [selectedMethod, setSelectedMethod] = useState('va');
+  const [selectedBank, setSelectedBank] = useState('BRI');
 
   // Booking fee values
   const unitPrices = {
@@ -1155,78 +1160,209 @@ export default function DashboardPage() {
       {showSimulator && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-[120] overflow-y-auto flex items-center justify-center p-4">
           
-          <div className="bg-[#f4f7f9] text-[#1a202c] rounded-3xl max-w-md w-full overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 my-8">
+          {/* Main simulator container */}
+          <div className="bg-[#f4f7f9] text-[#1a202c] rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl relative animate-in zoom-in-95 duration-300 my-8">
             
-            {/* Simulated test mode header */}
-            <div className="bg-[#f04438] text-white py-2 px-4.5 text-center text-[10px] font-black uppercase tracking-wider flex items-center justify-center gap-2">
-              <ShieldAlert size={12} />
-              <span>Mode Simulasi Xendit</span>
+            {/* Top Warning simulated header */}
+            <div className="bg-[#f04438] text-white py-2 px-4.5 text-center text-[11px] font-black uppercase tracking-wider flex items-center justify-center gap-2.5">
+              <ShieldAlert size={14} />
+              <span>You are in Test Mode and any transactions made are simulated and not real.</span>
             </div>
 
             {/* Simulated Xendit Navbar */}
-            <div className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+            <div className="bg-white border-b border-slate-200 px-6 sm:px-8 py-5 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-white font-black text-[10px]">
+                <div className="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white font-black text-sm">
                   I
                 </div>
-                <span className="font-extrabold text-[#1a202c] text-xs tracking-tight">Insira Memorial Park</span>
+                <span className="font-extrabold text-[#1a202c] tracking-tight">Insira Memorial Park</span>
               </div>
-              <span className="text-[9px] font-black uppercase text-slate-400">BRI Virtual Account</span>
+              <div className="flex items-center gap-2.5">
+                <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">English</span>
+                <ChevronDown size={14} className="text-slate-400" />
+              </div>
             </div>
 
-            {/* Body */}
-            <div className="p-6 space-y-6">
-              <div className="bg-white border border-slate-200 p-5 rounded-2xl space-y-4">
-                <div className="text-center space-y-1">
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">TOTAL TAGIHAN BOOKING FEE</span>
-                  <span className="text-xl font-black text-slate-900">
-                    Rp {Object.keys(cart).reduce((total, type) => total + (unitPrices[type] * cart[type]), 0).toLocaleString('id-ID')}
-                  </span>
-                </div>
-
-                <div className="h-px bg-slate-100"></div>
-
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-slate-450 font-bold">Nomor Virtual Account:</span>
-                    <span className="text-slate-800 font-black font-mono">132819999000432</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-450 font-bold">Nama Merchant:</span>
-                    <span className="text-slate-800 font-extrabold">KOTAHATI - INSIRA</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-450 font-bold">Kode Transaksi:</span>
-                    <span className="text-slate-800 font-extrabold">{nupCode}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="space-y-2">
-                <button
-                  onClick={handleSimulatedPaymentComplete}
-                  disabled={isPaying}
-                  className="w-full bg-[#004b87] hover:bg-[#003d70] disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed text-white text-xs font-black py-4.5 rounded-2xl uppercase tracking-widest transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2"
-                >
-                  {isPaying ? (
-                    <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                  ) : (
-                    <span>Bayar Sekarang (Simulasi)</span>
-                  )}
-                </button>
+            {/* Standard Xendit Checkout Grid */}
+            <div className="grid md:grid-cols-12 text-[#1a202c]">
+              
+              {/* Left side: Payment Methods */}
+              <div className="md:col-span-7 p-6 sm:p-8 space-y-6">
                 
-                <button
-                  onClick={() => {
-                    setShowSimulator(false);
-                    setIsPaying(false);
-                  }}
-                  disabled={isPaying}
-                  className="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-black py-3 rounded-2xl uppercase tracking-wider transition-all"
-                >
-                  Batal Transaksi
-                </button>
+                {/* PAY BEFORE EXPIRATION */}
+                <div className="space-y-1">
+                  <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest block">PAY BEFORE MAY 25, 2026 AT 22:16</span>
+                  <h2 className="text-3xl font-black text-[#1a202c] tracking-tight">
+                    IDR {Object.keys(cart).reduce((total, type) => total + (unitPrices[type] * cart[type]), 0).toLocaleString('id-ID')}
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">PAYMENT METHOD</h3>
+                  
+                  {/* Bank Transfer selector */}
+                  <div 
+                    onClick={() => setSelectedMethod('va')}
+                    className={`border rounded-2xl p-4.5 flex flex-col gap-3 transition-all cursor-pointer ${
+                      selectedMethod === 'va' 
+                        ? 'border-blue-600 bg-blue-50/10' 
+                        : 'border-slate-200 bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 font-extrabold text-xs text-[#1a202c]">
+                        <Building size={16} className="text-slate-400 shrink-0" />
+                        <span>Bank Transfer</span>
+                      </div>
+                      <ChevronDown size={14} className="text-slate-400" />
+                    </div>
+
+                    {selectedMethod === 'va' && (
+                      <div className="flex gap-2.5 pt-2 animate-in fade-in duration-300">
+                        {['BCA', 'BNI', 'BRI'].map(bank => (
+                          <button
+                            key={bank}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedBank(bank);
+                            }}
+                            className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all border cursor-pointer ${
+                              selectedBank === bank
+                                ? 'border-blue-600 bg-blue-600 text-white shadow-md'
+                                : 'border-slate-200 text-slate-500 hover:text-slate-700 bg-white'
+                            }`}
+                          >
+                            {bank}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Credit / Debit Card */}
+                  <div 
+                    onClick={() => setSelectedMethod('card')}
+                    className={`border rounded-2xl p-4.5 flex items-center justify-between transition-all cursor-pointer ${
+                      selectedMethod === 'card' 
+                        ? 'border-blue-600 bg-blue-50/10' 
+                        : 'border-slate-200 bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 font-extrabold text-xs text-[#1a202c]">
+                      <CreditCard size={16} className="text-slate-400 shrink-0" />
+                      <span>Credit / Debit Card</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-extrabold">Visa / Master</span>
+                  </div>
+
+                  {/* E-Wallet */}
+                  <div 
+                    onClick={() => setSelectedMethod('ewallet')}
+                    className={`border rounded-2xl p-4.5 flex items-center justify-between transition-all cursor-pointer ${
+                      selectedMethod === 'ewallet' 
+                        ? 'border-blue-600 bg-blue-50/10' 
+                        : 'border-slate-200 bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 font-extrabold text-xs text-[#1a202c]">
+                      <Smartphone size={16} className="text-slate-400 shrink-0" />
+                      <span>E-Wallet</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-extrabold">OVO, DANA</span>
+                  </div>
+
+                  {/* QR Payments */}
+                  <div 
+                    onClick={() => setSelectedMethod('qr')}
+                    className={`border rounded-2xl p-4.5 flex items-center justify-between transition-all cursor-pointer ${
+                      selectedMethod === 'qr' 
+                        ? 'border-blue-600 bg-blue-50/10' 
+                        : 'border-slate-200 bg-white hover:border-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 font-extrabold text-xs text-[#1a202c]">
+                      <QrCode size={16} className="text-slate-400 shrink-0" />
+                      <span>QR Payments</span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-extrabold">QRIS</span>
+                  </div>
+                </div>
+
+                {/* BOTTOM ACTION BUTTONS */}
+                <div className="flex gap-4 pt-4">
+                  <button
+                    onClick={() => {
+                      setShowSimulator(false);
+                      setIsPaying(false);
+                    }}
+                    className="flex-1 bg-white hover:bg-slate-50 border border-slate-200 py-4.5 rounded-2xl text-xs font-black uppercase tracking-widest text-slate-600 transition-all cursor-pointer text-center"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSimulatedPaymentComplete}
+                    disabled={isPaying}
+                    className="flex-grow-[2] bg-blue-600 hover:bg-blue-500 disabled:bg-blue-300 text-white py-4.5 rounded-2xl text-xs font-black uppercase tracking-widest transition-all cursor-pointer shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2"
+                  >
+                    {isPaying ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
+                        <span>Processing...</span>
+                      </>
+                    ) : (
+                      <span>Pay Now (Simulate)</span>
+                    )}
+                  </button>
+                </div>
               </div>
+
+              {/* Right side: Order Summary */}
+              <div className="md:col-span-5 bg-white border-l border-slate-200 p-6 sm:p-8 space-y-6">
+                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">ORDER SUMMARY</h3>
+                
+                <div className="space-y-4 font-semibold text-xs text-slate-600">
+                  <div>
+                    <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">Invoice</span>
+                    <strong className="text-sm text-[#1a202c] font-black font-mono tracking-wider">TRX-SIM-{nupCode}</strong>
+                  </div>
+
+                  <div>
+                    <span className="text-[10px] text-slate-400 font-bold block uppercase tracking-wider">Description</span>
+                    <p className="text-xs text-slate-700 mt-0.5 leading-relaxed font-semibold">
+                      Pembayaran Booking Fee NUP {nupCode}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100 space-y-3.5">
+                    {Object.keys(cart).map(type => cart[type] > 0 && (
+                      <div key={type} className="flex justify-between items-start">
+                        <div>
+                          <span className="text-slate-800 font-black block">
+                            {type === 'SinglePremiere' ? 'Single - Premiere' : type === 'CouplePremiere' ? 'Couple - Premiere' : type === 'SignatureFamily' ? 'Signature Family' : type}
+                          </span>
+                          <span className="text-[10.5px] text-slate-400 font-extrabold">{cart[type]} × IDR {unitPrices[type].toLocaleString('id-ID')}</span>
+                        </div>
+                        <span className="text-[#1a202c] font-extrabold font-mono">IDR {(unitPrices[type] * cart[type]).toLocaleString('id-ID')}</span>
+                      </div>
+                    ))}
+                    
+                    <div className="flex justify-between items-center border-t border-slate-50 pt-3">
+                      <span className="text-slate-400 font-bold">Subtotal</span>
+                      <span className="text-slate-700 font-extrabold font-mono">
+                        IDR {Object.keys(cart).reduce((total, type) => total + (unitPrices[type] * cart[type]), 0).toLocaleString('id-ID')}
+                      </span>
+                    </div>
+
+                    <div className="flex justify-between items-center border-t border-slate-100 pt-3.5 text-sm font-black">
+                      <span className="text-[#1a202c] uppercase tracking-wider">Total Amount Due</span>
+                      <span className="text-blue-600 font-mono">
+                        IDR {Object.keys(cart).reduce((total, type) => total + (unitPrices[type] * cart[type]), 0).toLocaleString('id-ID')}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
